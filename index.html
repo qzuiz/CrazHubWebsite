@@ -62,7 +62,7 @@
         <section id="script" class="w-full text-center p-10 fade-in">
             <h2 class="text-4xl font-semibold text-blue-400">Latest Script</h2>
             <div class="bg-gray-800 p-4 rounded-lg mt-4 transition-transform transform hover:scale-105">
-                <code id="scriptText" class="block text-green-300">loadstring(game:HttpGet('https://example.com/script.lua'))()</code>
+                <code id="scriptText" class="block text-green-300">loadstring(game:HttpGet('https://raw.githubusercontent.com/qzuiz/CrazHub/refs/heads/main/MainScript'))()</code>
                 <button onclick="copyScript('Main')" class="mt-4 bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition">Copy Script</button>
             </div>
         </section>
@@ -72,7 +72,7 @@
         function copyScript(version) {
             let scriptText = "";
             if (version === 'Lite') {
-                scriptText = "loadstring(game:HttpGet('https://example.com/crazhub_lite.lua'))()";
+                scriptText = "loadstring(game:HttpGet('https://raw.githubusercontent.com/qzuiz/CrazHub/refs/heads/main/MainScript'))()";
             } else {
                 scriptText = document.getElementById("scriptText").innerText;
             }
