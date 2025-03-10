@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrazHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js" defer></script>
+    <style>
+        body { animation: fadeIn 1s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-in-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="min-h-screen flex flex-col items-center justify-center">
+        <nav class="w-full bg-blue-800 p-4 fixed top-0 flex justify-around shadow-lg transition duration-300 hover:shadow-2xl">
+            <a href="#home" class="hover:text-gray-300 transition-transform transform hover:scale-110">Home</a>
+            <a href="#info" class="hover:text-gray-300 transition-transform transform hover:scale-110">Info</a>
+            <a href="#discord" class="hover:text-gray-300 transition-transform transform hover:scale-110">Discord</a>
+            <a href="#versions" class="hover:text-gray-300 transition-transform transform hover:scale-110">Versions</a>
+            <a href="#script" class="hover:text-gray-300 transition-transform transform hover:scale-110">Script</a>
+        </nav>
+        
+        <section id="home" class="w-full text-center mt-20 p-10 fade-in">
+            <h1 class="text-5xl font-bold animate-pulse text-blue-400">Welcome to CrazHub</h1>
+            <p class="mt-4 text-lg text-gray-300">The best Roblox script hub with smooth animations and modern UI.</p>
+        </section>
+        
+        <section id="info" class="w-full text-center p-10 fade-in">
+            <h2 class="text-4xl font-semibold text-blue-400">What is CrazHub?</h2>
+            <p class="mt-4 text-gray-300">CrazHub is a powerful script hub designed to enhance your Roblox experience.</p>
+        </section>
+        
+        <section id="discord" class="w-full text-center p-10 fade-in">
+            <h2 class="text-4xl font-semibold text-blue-400">Join our Discord</h2>
+            <a href="#" class="text-blue-300 underline hover:text-blue-500 transition">Click here to join</a>
+        </section>
+        
+        <section id="versions" class="w-full text-center p-10 fade-in">
+            <h2 class="text-4xl font-semibold text-blue-400">CrazHub Versions</h2>
+            <div class="flex flex-wrap justify-center gap-6 mt-6">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-80 transition-transform transform hover:scale-105">
+                    <h3 class="text-2xl font-bold text-white">CrazHub Lite</h3>
+                    <p class="text-gray-400">Basic features with 5 games.</p>
+                    <p class="text-gray-400">FREE</p>
+                    <button onclick="copyScript('Lite')" class="mt-4 bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition">Copy Script</button>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-80 transition-transform transform hover:scale-105">
+                    <h3 class="text-2xl font-bold text-white">CrazHub Pro</h3>
+                    <p class="text-gray-400">Over 20+ games and alot more features like aimbots & more.</p>
+                    <p class="text-gray-400">45 ROBUX</p>
+                    <button onclick="copyScript('Pro')" class="mt-4 bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition">Copy Script</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="script" class="w-full text-center p-10 fade-in">
+            <h2 class="text-4xl font-semibold text-blue-400">Latest Script</h2>
+            <div class="bg-gray-800 p-4 rounded-lg mt-4 transition-transform transform hover:scale-105">
+                <code id="scriptText" class="block text-green-300">loadstring(game:HttpGet('https://example.com/script.lua'))()</code>
+                <button onclick="copyScript('Main')" class="mt-4 bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition">Copy Script</button>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        function copyScript(version) {
+            let scriptText = "";
+            if (version === 'Lite') {
+                scriptText = "loadstring(game:HttpGet('https://example.com/crazhub_lite.lua'))()";
+            } else {
+                scriptText = document.getElementById("scriptText").innerText;
+            }
+            navigator.clipboard.writeText(scriptText);
+            alert("Script copied!");
+        }
+
+        document.addEventListener("scroll", function() {
+            document.querySelectorAll(".fade-in").forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+                    el.classList.add("visible");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
